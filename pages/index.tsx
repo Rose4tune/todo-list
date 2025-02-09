@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../components/Botton";
+import TodoList from "../components/TodoList";
 
 export default function TodoListPage() {
   const [inputValue, setInputValue] = useState("");
@@ -20,6 +21,8 @@ export default function TodoListPage() {
           onClick={() => alert("할 일 추가!")}
         />
       </div>
+
+      <TodoList />
     </div>
   );
 }
