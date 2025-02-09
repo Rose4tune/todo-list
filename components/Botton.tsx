@@ -45,7 +45,12 @@ export default function Button({
         (type === "add" && !response) || (type === "editComplete" && !isChanged)
       }
     >
-      {type === "add" && "➕ 추가하기"}
+      {type === "add" && (
+        <>
+          <span className="hidden md:inline">➕ 추가하기</span>
+          <span className="inline md:hidden">+</span>
+        </>
+      )}
       {type === "delete" && "✖ 삭제하기"}
       {type === "editComplete" && "✔ 수정 완료"}
       {type === "plus" && "➕"}

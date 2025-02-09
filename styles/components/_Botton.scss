@@ -1,8 +1,7 @@
 @use "../helpers" as *;
 
 .botton {
-  width: 168px;
   height: 56px;
-  padding: 17px 40px;
+  padding: 17px 20px;
   @include border;
 }
