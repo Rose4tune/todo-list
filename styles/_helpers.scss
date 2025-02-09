@@ -1,0 +1,33 @@
+// MIXIN
+@mixin font(
+  $family: "",
+  $s: "",
+  $wght: "",
+  $ln: "",
+  $cr: "",
+  $align: "",
+  $trans: ""
+) {
+  @if ($family != "") {
+    font-family: $family;
+  }
+  @if ($s != "") {
+    font-size: #{$s}px;
+  }
+  @if ($wght != "") {
+    font-weight: $wght;
+  }
+  @if ($ln != "") {
+    line-height: $ln;
+  }
+  @if ($cr != "") {
+    color: $cr;
+  }
+  @if ($align != "") {
+    text-align: $align;
+  }
+  @if ($trans != "") {
+    text-transform: $trans;
+  }
+  @content;
+}

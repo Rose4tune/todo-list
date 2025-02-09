@@ -1,0 +1,23 @@
+@import "helpers";
+
+.font {
+  &-extra-16 {
+    @include font($s: 16, $wght: 800);
+  }
+  &-bold {
+    &-20 {
+      @include font($s: 20, $wght: 700);
+    }
+    &-18 {
+      @include font($s: 18, $wght: 700);
+    }
+    &-16 {
+      @include font($s: 16, $wght: 700);
+    }
+  }
+  &-regular {
+    &-16 {
+      @include font($s: 16, $wght: 400);
+    }
+  }
+}
