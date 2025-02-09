@@ -1,0 +1,7 @@
+@import "../helpers", "../colors";
+
+.input {
+  @include border;
+  padding: 17px 24px;
+  background-color: $slate-100;
+}

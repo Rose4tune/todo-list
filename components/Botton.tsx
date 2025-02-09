@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 
 interface ButtonProps {
@@ -19,13 +18,15 @@ export default function Button({
   return (
     <button
       className={clsx(
-        "flex items-center justify-center gap-2 px-4 py-2 font-bold-16 transition-all rounded-md shadow-md",
+        "botton flex items-center justify-center font-bold-16 transition-all",
         {
+          /** 기본 상태 */
           "bg-violet-100 text-slate-900 hover:bg-violet-200":
             type === "add" && state === "default",
           "bg-lime-300 text-black hover:bg-lime-400":
             type === "editComplete" && state === "default",
 
+          /** 활성화 상태 */
           "bg-violet-600 text-white hover:bg-violet-700":
             type === "add" && (state === "active" || response),
           "bg-rose-500 text-white hover:bg-rose-600": type === "delete",
@@ -33,7 +34,8 @@ export default function Button({
             type === "editComplete" && isChanged,
           "bg-slate-800 text-white hover:bg-slate-900": type === "plus",
 
-          "opacity-50 cursor-not-allowed":
+          /** 비활성화 상태 - add, editComplete */
+          "bg-slate-200 cursor-not-allowed":
             (type === "add" && !response) ||
             (type === "editComplete" && !isChanged),
         }
