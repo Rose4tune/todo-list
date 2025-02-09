@@ -1,0 +1,12 @@
+@import "reset", "helpers";
+@import "colors", "font";
+@import "components";
+
+body {
+  background: $slate-100;
+}
+
+.character {
+  width: 45%;
+  max-width: 240px;
+}
