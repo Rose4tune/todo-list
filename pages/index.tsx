@@ -27,7 +27,10 @@ export default function TodoListPage() {
         />
       </div>
 
-      <TodoList />
+      <div className="flex flex-col lg:flex-row gap-6">
+        <TodoList type={"to do"} />
+        <TodoList type={"done"} />
+      </div>
     </div>
   );
 }
