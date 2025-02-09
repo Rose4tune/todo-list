@@ -1,8 +1,10 @@
 import { useState } from "react";
-import Button from "../components/Botton";
-import TodoList from "../components/TodoList";
+import Button from "@/components/Botton";
+import TodoList from "@/components/TodoList";
+import { useTodoStore } from "@/store/todoStore";
 
 export default function TodoListPage() {
+  const { addTodo } = useTodoStore();
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -18,7 +20,10 @@ export default function TodoListPage() {
         <Button
           type="add"
           response={!!inputValue}
-          onClick={() => alert("할 일 추가!")}
+          onClick={() => {
+            addTodo(inputValue);
+            setInputValue("");
+          }}
         />
       </div>
 

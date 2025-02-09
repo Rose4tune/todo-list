@@ -3,7 +3,7 @@ import { useTodoStore } from "@/store/todoStore";
 import Chip from "./Chip";
 
 export default function TodoList() {
-  const { todos, fetchTodos } = useTodoStore();
+  const { todos, fetchTodos, toggleTodo } = useTodoStore();
 
   useEffect(() => {
     fetchTodos();
@@ -26,10 +26,30 @@ export default function TodoList() {
             </p>
           </>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-3 py-3">
             {todoItems.map((todo) => (
-              <li key={todo.id}>
-                <span>{todo.name}</span>
+              <li
+                key={todo.id}
+                className="todo-item flex justify-between items-center"
+              >
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={todo.isCompleted}
+                    onChange={() => toggleTodo(todo.id, !todo.isCompleted)}
+                    className="todo-checkbox"
+                  />
+                  <input
+                    type="checkbox"
+                    id={`todo-${todo.id}`}
+                    className="todo-checkbox"
+                    checked={todo.isCompleted}
+                    onChange={() => toggleTodo(todo.id, !todo.isCompleted)}
+                    hidden
+                  />
+                  <label htmlFor={`todo-${todo.id}`} className="todo-label" />
+                  <span>{todo.name}</span>
+                </div>
               </li>
             ))}
           </ul>
@@ -48,10 +68,26 @@ export default function TodoList() {
             </p>
           </>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-3 py-3">
             {doneItems.map((todo) => (
-              <li key={todo.id}>
-                <span>{todo.name}</span>
+              <li
+                key={todo.id}
+                className="todo-item flex justify-between items-center bg-violet-100"
+              >
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={`done-${todo.id}`}
+                    className="todo-checkbox"
+                    checked={todo.isCompleted}
+                    onChange={() => toggleTodo(todo.id, !todo.isCompleted)}
+                    hidden
+                  />
+                  <label htmlFor={`done-${todo.id}`} className="todo-label" />
+                  <span className="line-through text-gray-500">
+                    {todo.name}
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
