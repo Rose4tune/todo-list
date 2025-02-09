@@ -97,13 +97,17 @@ img {
   font-weight: 400;
 }
 
-.botton {
+.button {
   height: 56px;
   padding: 17px 20px;
   border-radius: 24px;
   border: 2px solid #0f172a;
   -webkit-box-shadow: 4px 4px 0 #0f172a;
           box-shadow: 4px 4px 0 #0f172a;
+}
+
+.button-icon {
+  width: 16px;
 }
 
 .chip {

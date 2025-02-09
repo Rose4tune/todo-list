@@ -1,7 +1,11 @@
 @use "../helpers" as *;
 
-.botton {
+.button {
   height: 56px;
   padding: 17px 20px;
   @include border;
+
+  &-icon {
+    width: 16px;
+  }
 }
