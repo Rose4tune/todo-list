@@ -6,8 +6,8 @@ export default function TodoListPage() {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <div className="max-w-lg mx-auto p-8">
-      <div className="flex gap-2 mb-4">
+    <div className="w-full">
+      <div className="flex gap-2 mb-10">
         <input
           type="text"
           placeholder="할 일을 입력하세요"

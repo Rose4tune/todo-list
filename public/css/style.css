@@ -123,3 +123,7 @@ img {
   -webkit-box-shadow: 4px 4px 0 #0f172a;
           box-shadow: 4px 4px 0 #0f172a;
 }
+
+body {
+  background: #f1f5f9;
+}

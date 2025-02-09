@@ -1,3 +1,7 @@
 @import "reset", "helpers";
 @import "colors", "font";
 @import "components";
+
+body {
+  background: $slate-100;
+}
