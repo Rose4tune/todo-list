@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/* RESET */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, button,
+del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+select, option, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video,
+*::after, *::before {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-family: "NanumSquare";
+  vertical-align: baseline;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+a, button,
+select, option {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th,
+table td {
+  vertical-align: middle;
+}
+
+img {
+  width: 100%;
+}
+
+.font-extra-16 {
+  font-size: 16px;
+  font-weight: 800;
+}
+.font-bold-20 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.font-bold-18 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.font-bold-16 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.font-regular-16 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.botton {
+  height: 56px;
+  padding: 17px 20px;
+  border-radius: 24px;
+  border: 2px solid #0f172a;
+  -webkit-box-shadow: 4px 4px 0 #0f172a;
+          box-shadow: 4px 4px 0 #0f172a;
+}
+
+.chip {
+  width: 100px;
+  height: 36px;
+  border-radius: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.input {
+  padding: 17px 24px;
+  border-radius: 24px;
+  border-radius: 24px;
+  border: 2px solid #0f172a;
+  -webkit-box-shadow: 4px 4px 0 #0f172a;
+          box-shadow: 4px 4px 0 #0f172a;
+}
+
+.todo-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  padding: 9px 12px;
+  border: 2px solid #0f172a;
+  border-radius: 30px;
+  -webkit-transition: border 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.todo-item:hover {
+  border-color: #7c3aed;
+}
+
+.todo-item.done {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+/* ✅ 기본 체크박스 숨기기 */
+.todo-checkbox {
+  display: none;
+}
+
+/* ✅ 체크박스를 대체할 label 스타일 */
+.todo-label {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  background-position: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/* ✅ 체크 상태에 따라 이미지 변경 */
+.todo-checkbox + .todo-label {
+  background-image: url("/image/checkCircle.svg");
+}
+
+.todo-checkbox:checked + .todo-label {
+  background-image: url("/image/checkedCircle.svg");
+}
+
+body {
+  background: #f1f5f9;
+}
+
+.character {
+  width: 45%;
+  max-width: 240px;
+}

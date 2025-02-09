@@ -1,0 +1,7 @@
+@use "../helpers" as *;
+
+.input {
+  padding: 17px 24px;
+  border-radius: 24px;
+  @include border;
+}
