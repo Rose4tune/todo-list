@@ -19,14 +19,12 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// 기본 버튼
 export const Default: Story = {
   args: {
     type: "add",
   },
 };
 
-// 추가하기 버튼 (기본 & 활성화)
 export const AddButton: Story = {
   args: {
     type: "add",
@@ -39,14 +37,12 @@ export const AddButtonActive: Story = {
   },
 };
 
-// 삭제 버튼
 export const DeleteButton: Story = {
   args: {
     type: "delete",
   },
 };
 
-// 수정 완료 버튼 (기본 & 변경됨)
 export const EditCompleteButton: Story = {
   args: {
     type: "editComplete",
@@ -59,7 +55,6 @@ export const EditCompleteChanged: Story = {
   },
 };
 
-// 플러스 버튼
 export const PlusButton: Story = {
   args: {
     type: "plus",
