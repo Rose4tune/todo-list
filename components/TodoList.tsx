@@ -17,7 +17,14 @@ export default function TodoList() {
       <section className="w-full lg:w-1/2">
         <Chip type={"to do"} />
         {todoItems.length === 0 ? (
-          <p className="text-gray-500">할 일이 없습니다.</p>
+          <>
+            <div className="character m-auto">
+              <img src="/image/character-todo.svg" alt="not yet" />
+            </div>
+            <p className="text-gray-500 text-center">
+              할 일이 없어요.<br></br>TODO를 새롭게 추가해주세요!
+            </p>
+          </>
         ) : (
           <ul className="space-y-2">
             {todoItems.map((todo) => (
@@ -32,7 +39,14 @@ export default function TodoList() {
       <section className="w-full lg:w-1/2">
         <Chip type={"done"} />
         {doneItems.length === 0 ? (
-          <p className="text-gray-500">완료된 할 일이 없습니다.</p>
+          <>
+            <div className="character m-auto">
+              <img src="/image/character-done.svg" alt="not yet" />
+            </div>
+            <p className="text-gray-500 text-center">
+              아직 다 한 일이 없어요.<br></br>해야 할 일을 체크해보세요!
+            </p>
+          </>
         ) : (
           <ul className="space-y-2">
             {doneItems.map((todo) => (
