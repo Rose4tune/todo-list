@@ -1,79 +1,43 @@
 @use "../colors" as *;
 
-// .todo-item {
-//   padding: 0.75rem;
-//   border: 2px solid $slate-900;
-//   border-radius: 27px;
-//   transition: border 0.2s ease-in-out;
+.todo {
+  &-item {
+    gap: 16px;
+    padding: 9px 12px;
+    border: 2px solid $slate-900;
+    border-radius: 30px;
+    transition: border 0.2s ease-in-out;
+    cursor: pointer;
 
-//   &:hover {
-//     border-color: $violet-600;
-//   }
+    &:hover {
+      border-color: $violet-600;
+    }
 
-//   &.done {
-//     background: $violet-100;
-//   }
-// }
-
-// .checkbox-icon {
-//   width: 32px;
-//   height: 32px;
-//   background-size: cover;
-//   background-position: center;
-//   flex-shrink: 0; // 크기 고정
-
-//   &.unchecked {
-//     background-image: url("/icons/circle_empty.svg");
-//   }
-
-//   &.checked {
-//     background-image: url("/icons/check_filled.svg");
-//   }
-// }
-
-// 📂 styles/TodoList.module.scss
-
-.todo-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 9px 12px;
-  border: 2px solid $slate-900; // 검정색 테두리
-  border-radius: 30px;
-  transition: border 0.2s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    border-color: $violet-600; // 보라색 강조
+    &.done {
+      background: $violet-100;
+      color: $violet-600;
+    }
   }
 
-  &.done {
-    background: $violet-100;
-    color: $violet-600;
+  &-checkbox {
+    display: none;
+
+    & + .todo-label {
+      background-image: url("/image/checkCircle.svg");
+    }
+
+    &:checked + .todo-label {
+      background-image: url("/image/checkedCircle.svg");
+    }
   }
-}
 
-/* ✅ 기본 체크박스 숨기기 */
-.todo-checkbox {
-  display: none;
-}
-
-/* ✅ 체크박스를 대체할 label 스타일 */
-.todo-label {
-  width: 32px;
-  height: 32px;
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0; // 크기 고정
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-/* ✅ 체크 상태에 따라 이미지 변경 */
-.todo-checkbox + .todo-label {
-  background-image: url("/image/checkCircle.svg");
-}
-
-.todo-checkbox:checked + .todo-label {
-  background-image: url("/image/checkedCircle.svg");
+  &-label {
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
 }
