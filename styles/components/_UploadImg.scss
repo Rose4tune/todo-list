@@ -1,0 +1,45 @@
+@use "../colors" as *;
+
+.upload {
+  width: 380px;
+  height: 310px;
+  border: 6px dashed $slate-300;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+
+  &-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: $slate-100;
+  }
+
+  &-placeholder-icon {
+    width: 50px;
+    opacity: 0.4;
+  }
+
+  &-plus-icon {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 64px;
+    height: 64px;
+    border-radius: 40px;
+    background: $slate-200 url("/image/icon/plus.svg") no-repeat center center;
+    background-size: 50%;
+  }
+
+  &-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
