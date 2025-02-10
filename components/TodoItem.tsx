@@ -1,4 +1,5 @@
 import { useTodoStore } from "@/store/todoStore";
+import Link from "next/link";
 
 interface TodoItemProps {
   id: number;
@@ -15,26 +16,22 @@ export default function TodoItem({
 }: TodoItemProps) {
   const { toggleTodo } = useTodoStore();
   const typeId = `${type}-${id}`;
-  let todoItemClass = "todo-item flex items-center";
-  let todoNameClass = "text-slate-800";
-
-  if (type === "done") {
-    todoItemClass += todoItemClass + " bg-violet-100";
-    todoNameClass += todoNameClass + " line-through";
-  }
 
   return (
-    <li className={todoItemClass}>
+    <div
+      className={`todo-item flex items-center ${isCompleted ? "bg-violet-100 line-through" : ""}`}
+    >
       <input
         type="checkbox"
         id={typeId}
-        className="todo-checkbox"
+        className="hidden todo-checkbox"
         checked={isCompleted}
         onChange={() => toggleTodo(id, !isCompleted)}
-        hidden
       />
-      <label htmlFor={typeId} className="todo-label" />
-      <span className={todoNameClass}>{name}</span>
-    </li>
+      <label htmlFor={typeId} className="todo-label cursor-pointer" />
+      <Link href={`/items/${id}`} className="todo-name">
+        <span>{name}</span>
+      </Link>
+    </div>
   );
 }
