@@ -21,6 +21,7 @@ export default function TodoDetail() {
   const [todo, setTodo] = useState<TodoItem | null>(null);
   const [name, setName] = useState("");
   const [memo, setMemo] = useState("");
+  const [image, setImage] = useState<string | File | null>(null);
   const [isCompleted, setIsCompleted] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -52,7 +53,7 @@ export default function TodoDetail() {
     const updateData = {
       name,
       memo,
-      imageUrl: preview || "",
+      imageUrl: typeof image === "string" ? image : preview || "",
       isCompleted: isCompleted,
     };
 
@@ -66,6 +67,28 @@ export default function TodoDetail() {
     if (!todo) return;
     await deleteTodo(todo.id);
     router.push("/");
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+
+    if (!file) return;
+
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      alert("파일 크기가 5MB를 초과합니다.");
+      return;
+    }
+
+    const fileName = file.name;
+    const fileNameRegex = /^[a-zA-Z0-9._-]+$/;
+    if (!fileNameRegex.test(fileName)) {
+      alert("파일명은 영어, 숫자, _, - 만 사용할 수 있습니다.");
+      return;
+    }
+
+    setImage(file);
+    setPreview(file ? URL.createObjectURL(file) : initialImage);
   };
 
   const isChanged =
@@ -106,10 +129,7 @@ export default function TodoDetail() {
             <input
               type="file"
               accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files?.[0] || null;
-                setPreview(file ? URL.createObjectURL(file) : initialImage);
-              }}
+              onChange={handleImageUpload}
               className="hidden"
             />
           </label>

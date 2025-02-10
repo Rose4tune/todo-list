@@ -10,8 +10,8 @@ interface TodoItem {
 
 interface UpdateItem {
   name: string;
-  memo: string;
-  imageUrl: string;
+  memo?: string;
+  imageUrl?: string;
   isCompleted: boolean;
 }
 interface TodoState {
