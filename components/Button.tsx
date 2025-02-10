@@ -34,17 +34,14 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const thisStyle = buttonStyles[type as keyof typeof buttonStyles];
-  const isActive = type === "editComplete" ? isChanged : response;
   const isDisabled =
     (type === "add" && !response) || (type === "editComplete" && !isChanged);
 
-  console.log(isActive, isDisabled);
   return (
     <button
       className={clsx(
         "button flex items-center justify-center font-bold-16 transition-all gap-2",
-        thisStyle.default,
-        isActive && thisStyle.active,
+        isChanged ? thisStyle.active : thisStyle.default,
         isDisabled && "cursor-not-allowed bg-slate-200"
       )}
       onClick={!isDisabled ? onClick : undefined}

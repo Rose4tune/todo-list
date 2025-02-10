@@ -8,10 +8,18 @@ interface TodoItem {
   isCompleted: boolean;
 }
 
+interface UpdateItem {
+  name: string;
+  memo: string;
+  imageUrl: string;
+  isCompleted: boolean;
+}
 interface TodoState {
   todos: TodoItem[];
+  fetchTodoDetail: (id: number) => Promise<TodoItem | null>;
   fetchTodos: () => Promise<void>;
   addTodo: (name: string) => Promise<void>;
+  updateTodo: (id: number, updatedData: UpdateItem) => Promise<void>;
   deleteTodo: (id: number) => Promise<void>;
   toggleTodo: (id: number, isCompleted: boolean) => Promise<void>;
 }
@@ -29,6 +37,14 @@ export const useTodoStore = create<TodoState>((set) => ({
     set({ todos: data });
   },
 
+  fetchTodoDetail: async (id) => {
+    const res = await fetch(
+      `https://assignment-todolist-api.vercel.app/api/${tenantId}/items/${id}`
+    );
+    if (!res.ok) return null;
+    return await res.json();
+  },
+
   addTodo: async (name) => {
     const res = await fetch(
       `https://assignment-todolist-api.vercel.app/api/${tenantId}/items`,
@@ -40,6 +56,34 @@ export const useTodoStore = create<TodoState>((set) => ({
     );
     const newTodo = await res.json();
     set((state) => ({ todos: [...state.todos, newTodo] }));
+  },
+
+  updateTodo: async (id, updateData) => {
+    const apiUrl = `https://assignment-todolist-api.vercel.app/api/${tenantId}/items/${id}`;
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateData),
+      });
+
+      const responseJson = await res.json();
+
+      if (!res.ok) {
+        throw new Error(`서버 오류: ${res.status} ${res.statusText}`);
+      }
+
+      set((state) => ({
+        todos: state.todos.map((todo) =>
+          todo.id === id ? responseJson : todo
+        ),
+      }));
+    } catch (error) {
+      console.error("🚨 업데이트 실패:", error);
+    }
   },
 
   deleteTodo: async (id) => {
