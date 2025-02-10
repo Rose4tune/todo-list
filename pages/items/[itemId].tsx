@@ -26,6 +26,7 @@ export default function TodoDetail() {
 
   const [initialMemo, setInitialMemo] = useState("");
   const [initialImage, setInitialImage] = useState<string | null>(null);
+  const [initialCompleted, setInitialCompleted] = useState(false);
 
   useEffect(() => {
     if (itemId) {
@@ -39,6 +40,7 @@ export default function TodoDetail() {
 
           setInitialMemo(data.memo || "");
           setInitialImage(data.imageUrl || null);
+          setInitialCompleted(data.isCompleted);
         }
       });
     }
@@ -51,7 +53,7 @@ export default function TodoDetail() {
       name,
       memo,
       imageUrl: preview || "",
-      isCompleted,
+      isCompleted: isCompleted,
     };
 
     await updateTodo(todo.id, updateData);
@@ -66,7 +68,10 @@ export default function TodoDetail() {
     router.push("/");
   };
 
-  const isChanged = memo !== initialMemo || preview !== initialImage;
+  const isChanged =
+    memo !== initialMemo ||
+    preview !== initialImage ||
+    isCompleted !== initialCompleted;
 
   if (!todo) {
     return <p className="text-center mt-10">할 일을 불러오는 중...</p>;
@@ -74,12 +79,14 @@ export default function TodoDetail() {
 
   return (
     <div className="w-full bg-white py-4 px-20 flex flex-col gap-4">
-      <TodoItem
-        id={todo.id}
-        type={isCompleted ? "done" : "to do"}
-        name={todo.name}
-        isCompleted={isCompleted}
-      />
+      <div onClick={() => setIsCompleted((prev) => !prev)}>
+        <TodoItem
+          id={todo.id}
+          type={isCompleted ? "done" : "to do"}
+          name={todo.name}
+          isCompleted={isCompleted}
+        />
+      </div>
 
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="upload w-full lg:flex-1">
