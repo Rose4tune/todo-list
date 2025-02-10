@@ -40,4 +40,10 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
+
+  &-name {
+    display: block;
+    width: 100%;
+    color: $slate-800;
+  }
 }

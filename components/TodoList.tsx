@@ -13,7 +13,7 @@ export default function TodoList({ type }: TodoListProps) {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   const items = {
     "to do": todos.filter((todo) => !todo.isCompleted),
@@ -27,8 +27,15 @@ export default function TodoList({ type }: TodoListProps) {
         <TodoBlank type={type} />
       ) : (
         <ul className="space-y-3 py-3">
-          {items[type].map(({ id, name }) => (
-            <TodoItem id={id} type={type} name={name} key={type + id} />
+          {items[type].map(({ id, name, isCompleted }) => (
+            <li key={type + id}>
+              <TodoItem
+                id={id}
+                type={type}
+                name={name}
+                isCompleted={isCompleted}
+              />
+            </li>
           ))}
         </ul>
       )}
