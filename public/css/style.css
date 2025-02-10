@@ -177,7 +177,7 @@ img {
 }
 
 .upload {
-  width: 380px;
+  min-width: 380px;
   height: 310px;
   border: 6px dashed #cbd5e1;
   border-radius: 25px;
@@ -232,7 +232,6 @@ img {
 
 .memo {
   width: 100%;
-  max-width: 700px;
   position: relative;
 }
 
@@ -252,6 +251,7 @@ img {
   padding: 30px 16px 16px;
   border-radius: 10px;
   background: url("/image/memo.png") repeat;
+  background-size: contain;
   font-size: 16px;
   line-height: 1.8;
   outline: none;

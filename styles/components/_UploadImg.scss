@@ -1,7 +1,7 @@
 @use "../colors" as *;
 
 .upload {
-  width: 380px;
+  min-width: 380px;
   height: 310px;
   border: 6px dashed $slate-300;
   border-radius: 25px;

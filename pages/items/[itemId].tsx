@@ -82,7 +82,7 @@ export default function TodoDetail() {
       />
 
       <div className="flex flex-col lg:flex-row gap-4">
-        <div className="upload">
+        <div className="upload w-full lg:flex-1">
           <label className="upload-label">
             {preview ? (
               <img src={preview} alt="Uploaded" className="upload-preview" />
@@ -108,7 +108,7 @@ export default function TodoDetail() {
           </label>
         </div>
 
-        <div className="memo flex-1">
+        <div className="memo w-full lg:flex-2">
           <label className="memo-label font-extra-16">Memo</label>
           <textarea
             value={memo}

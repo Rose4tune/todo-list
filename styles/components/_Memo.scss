@@ -2,7 +2,6 @@
 
 .memo {
   width: 100%;
-  max-width: 700px;
   position: relative;
 
   &-label {
@@ -20,6 +19,7 @@
     padding: 30px 16px 16px;
     border-radius: 10px;
     background: url("/image/memo.png") repeat;
+    background-size: contain;
     font-size: 16px;
     line-height: 1.8;
     outline: none;
